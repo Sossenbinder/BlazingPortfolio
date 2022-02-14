@@ -22,6 +22,7 @@ namespace BlazingPortfolio.Pages
 				new("resources/github.png", "https://github.com/Sossenbinder", "Github"),
 				new("resources/twitter.png", "https://twitter.com/DotSchranz", "Twitter"),
 				new("resources/linkedin.png", "https://www.linkedin.com/in/stefan-schranz-1aa8a6196/", "LinkedIn"),
+				new ("resources/telegram.png", "https://telegram.me/Sossenbinder", "Telegram"),
 			};
 		}
 	}
