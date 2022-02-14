@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+
+namespace BlazingPortfolio.Pages
+{
+	internal record LinkItemInformation(string IconUrl, string Link, string Title);
+
+	public partial class Home
+	{
+		[Inject]
+		public IJSRuntime JsRuntime { get; set; }
+
+		private List<LinkItemInformation> _linkItemInformations;
+
+		private bool _flipped;
+
+		protected override void OnInitialized()
+		{
+			_linkItemInformations = new List<LinkItemInformation>()
+			{
+				new("resources/medium.png", "https://stefansch.medium.com", "Blog (Medium)"),
+				new("resources/github.png", "https://github.com/Sossenbinder", "Github"),
+				new("resources/twitter.png", "https://twitter.com/DotSchranz", "Twitter"),
+				new("resources/linkedin.png", "https://www.linkedin.com/in/stefan-schranz-1aa8a6196/", "LinkedIn"),
+			};
+		}
+	}
+}

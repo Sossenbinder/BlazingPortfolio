@@ -1,0 +1,46 @@
+﻿.Container {
+    width: 25%;
+    height: 50%;
+    background: rgb(250, 250, 250);
+    place-self: center;
+    border-radius: 15px;
+    box-shadow: 0 0 13px 2px black;
+
+    @media (max-width: 720px) {
+        width: 90%;
+        height: 90%;
+    }
+
+    .CardContainer {
+        height: calc(100% - 2rem);
+        position: relative;
+    }
+}
+
+.BlazorWatermark {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 3px;
+    font-size: 1.25rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-top-left-radius: 5px;
+    cursor: default;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    ::deep span {
+        font-size: 1rem;
+
+        &:nth-of-type(2) {
+            color: red;
+        }
+
+        &:nth-of-type(4) {
+            color: mediumpurple;
+        }
+    }
+}

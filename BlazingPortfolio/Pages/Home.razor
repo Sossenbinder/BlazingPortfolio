@@ -1,0 +1,113 @@
+﻿@page "/"
+
+<div class="@($"Card Front {(_flipped ? "Flip" : "")}")">
+    <div class="ProfilePicture"/>
+    <span class="Heading">Stefan Schranz</span>
+    <span>
+        Software Development | Cloud Architecture | Knowledge Sharing
+    </span>
+    <div class="InfoSection">
+        <span class="InfoRow">
+            <span>
+                <MaterialIcon
+                    IconName="place"/>
+                <span>Location</span>
+            </span>
+            <span>Kirchheim unter Teck, Germany</span>
+        </span>
+        <span class="InfoRow">
+            <span>
+                <MaterialIcon
+                    IconName="business"/>
+                <span>Workplace</span>
+            </span>
+            <a href="https://www.teamviewer.com">@@TeamViewer</a>
+        </span>
+    </div>
+    <span 
+        class="KnowledgeSkills"
+        @onclick="@(_ => { Console.WriteLine("Test");
+                             _flipped = !_flipped; })">
+        <MaterialIcon
+            IconName="construction"/>
+        <span>Knowledge & Skills</span>
+    </span>
+    <div class="LinkTree">
+        @{
+            foreach (var (iconUrl, link, title) in _linkItemInformations)
+            {
+                <div
+                    class="LinkBubble"
+                    @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("open", link, "_blank"))"
+                    title="@title">
+                    <img src="@iconUrl" alt="?"/>
+                </div>
+            }
+        }
+        <div
+            class="LinkBubble"
+            @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("window.location.assign", "mailto:stefan.daniel.schranz96@gmail.com"))"
+            title="Send me a mail">
+            <MaterialIcon
+                IconName="email"/>
+        </div>
+    </div>
+</div>
+<div class="@($"Card Back {(_flipped ? "Flip" : "")}")">
+    <span class="Heading">Knowledge & Skills</span>
+    <div class="InfoSection">
+        <span class="InfoRow">
+            <span>
+                <MaterialIcon
+                    IconName="menu_book"/>
+                <span>Languages</span>
+            </span>
+            <ul>
+                <li><b>C#</b></li>
+                <li><b>JS / TS</b></li>
+                <li>CSS (Sass & Less)</li>
+                <li><i>Python</i></li>
+                <li><i>C++</i></li>
+                <li><i>Java</i></li>
+                <li><i>Go</i></li>
+            </ul>
+        </span>
+        <span class="InfoRow">
+            <span>
+                <MaterialIcon
+                    IconName="build"/>
+                <span>Technologies</span>
+            </span>
+            <ul>
+                <li><b>.NET <i>Core</i></b></li>
+                <li><b>ASP.NET <i>Core</i></b></li>
+                <li><b>Web</b></li>
+                <li><b>Cloud</b></li>
+                <li><b>Microservices</b></li>
+                <li><b>Docker</b></li>
+                <li><b>Kubernetes</b></li>
+                <li><b>Azure Functions</b></li>
+                <li><b>Kubernetes</b></li>
+                <li><b>Testing</b></li>
+                <li><b>React</b></li>
+            </ul>
+            <ul>
+                <li><b>Azure</b></li>
+                <li><b>DB (Sql, NoSql)</b></li>
+                <li><b>Git</b></li>
+                <li><b>Blazor</b></li>
+                <li>Azure Service Fabric</li>
+                <li>AWS</li>
+                <li>Ranorex</li>
+                <li>Terraform</li>
+                <li>And much more...</li>
+            </ul>
+        </span>
+    </div>
+    <div 
+        class="LinkBubble"
+        @onclick="@(_ => _flipped = !_flipped)">
+        <MaterialIcon 
+            IconName="arrow_back"/>
+    </div>
+</div>

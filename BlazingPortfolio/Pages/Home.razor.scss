@@ -1,0 +1,113 @@
+﻿$buttonColor: #e8f1f0;
+
+@mixin btn {
+    background: $buttonColor;
+    box-shadow: #c7c6c6 0px 0px 7px 2px;
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: #ddd9d9 2px -2px 7px 2px;
+    }
+}
+
+.LinkBubble {
+    @include btn;
+    height: 48px;
+    width: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 0 3px;
+
+    img {
+        height: 60%;
+        width: 60%;
+    }
+}
+
+.Heading {
+    font-size: 2rem;
+    font-family: fangsong;
+    font-variant: small-caps;
+}
+
+.Card {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out;
+
+    &.Front {
+        &.Flip {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &.Back {
+        transform: rotateY(180deg);
+
+        &.Flip {
+            transform: rotateY(360deg);
+        }
+    }
+
+    > * {
+        margin: 0.5rem 0;
+    }
+
+    .ProfilePicture {
+        height: 200px;
+        width: 152px;
+        background: url(resources/profilepicture.png);
+        background-size: cover;
+        border-radius: 20px;
+    }
+
+    .InfoSection {
+        width: 70%;
+        font-size: 0.9rem;
+
+        .InfoRow {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .MultiLineSection {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                justify-content: space-between;
+            }
+
+            > span {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    }
+
+    .KnowledgeSkills {
+        @include btn;
+        border: 1px solid grey;
+        border-radius: 15px;
+        padding: 2px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .LinkTree {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}

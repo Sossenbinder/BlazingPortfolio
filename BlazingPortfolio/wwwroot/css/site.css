@@ -1,0 +1,13 @@
+﻿body, html {
+    background: url(../resources/background.jpg);
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
