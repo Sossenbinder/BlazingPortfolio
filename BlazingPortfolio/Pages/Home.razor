@@ -1,37 +1,40 @@
 ﻿@page "/"
 
 <div class="@($"Card Front {(_flipped ? "Flip" : "")}")">
-    <div class="ProfilePicture"/>
-    <span class="Heading">Stefan Schranz</span>
-    <span>
-        Software Development | Cloud Architecture | Knowledge Sharing
-    </span>
-    <div class="InfoSection">
-        <span class="InfoRow">
-            <span>
-                <MaterialIcon
-                    IconName="place"/>
-                <span>Location</span>
+    <div class="Meta">
+        <div class="ProfilePicture"/>
+        <div class="MetaDescriptions">
+            <span class="Heading">Stefan Schranz</span>
+            <span class="Description">
+                Software Development | Cloud Architecture | Knowledge Sharing
             </span>
-            <span>Kirchheim unter Teck, Germany</span>
-        </span>
-        <span class="InfoRow">
-            <span>
+            <div class="InfoSection">
+                <span class="InfoRow">
+                    <span>
+                        <MaterialIcon
+                            IconName="place"/>
+                        <span>Location</span>
+                    </span>
+                    <span>Kirchheim unter Teck, Germany</span>
+                </span>
+                <span class="InfoRow">
+                    <span>
+                        <MaterialIcon
+                            IconName="business"/>
+                        <span>Workplace</span>
+                    </span>
+                    <a href="https://www.teamviewer.com">@@TeamViewer</a>
+                </span>
+            </div>
+            <span
+                class="KnowledgeSkills"
+                @onclick="@(_ => _flipped = !_flipped)">
                 <MaterialIcon
-                    IconName="business"/>
-                <span>Workplace</span>
+                    IconName="construction"/>
+                <span>Knowledge & Skills</span>
             </span>
-            <a href="https://www.teamviewer.com">@@TeamViewer</a>
-        </span>
+        </div>
     </div>
-    <span 
-        class="KnowledgeSkills"
-        @onclick="@(_ => { Console.WriteLine("Test");
-                             _flipped = !_flipped; })">
-        <MaterialIcon
-            IconName="construction"/>
-        <span>Knowledge & Skills</span>
-    </span>
     <div class="LinkTree">
         @{
             foreach (var (iconUrl, link, title) in _linkItemInformations)
@@ -76,7 +79,7 @@
             <span>
                 <MaterialIcon
                     IconName="build"/>
-                <span>Technologies</span>
+                <span>Tech</span>
             </span>
             <ul>
                 <li><b>.NET <i>Core</i></b></li>
@@ -105,7 +108,7 @@
         </span>
     </div>
     <div 
-        class="LinkBubble"
+        class="LinkBubble BackButton"
         @onclick="@(_ => _flipped = !_flipped)">
         <MaterialIcon 
             IconName="arrow_back"/>

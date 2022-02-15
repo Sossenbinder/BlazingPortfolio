@@ -10,28 +10,6 @@
     }
 }
 
-.LinkBubble {
-    @include btn;
-    height: 48px;
-    width: 48px;
-    display: grid;
-    place-items: center;
-    border-radius: 50px;
-    cursor: pointer;
-    margin: 0 3px;
-
-    img {
-        height: 60%;
-        width: 60%;
-    }
-}
-
-.Heading {
-    font-size: 2rem;
-    font-family: fangsong;
-    font-variant: small-caps;
-}
-
 .Card {
     position: absolute;
     height: 100%;
@@ -39,9 +17,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     transition: transform 0.5s ease-in-out;
+
+    .Heading {
+        font-size: 2rem;
+        font-family: fangsong;
+        font-variant: small-caps;
+        margin-bottom: unset;
+    }
+
+    .Description {
+        text-align: center;
+        width: 80%;
+    }
 
     &.Front {
         &.Flip {
@@ -57,21 +48,68 @@
         }
     }
 
+    .LinkBubble {
+        @include btn;
+        height: 48px;
+        width: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 0 3px;
+
+        img {
+            height: 60%;
+            width: 60%;
+        }
+    }
+
+    .BackButton {
+        @media (max-width: 900px) and (orientation: landscape) {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+    }
+
     > * {
         margin: 0.5rem 0;
     }
 
-    .ProfilePicture {
-        height: 200px;
-        width: 152px;
-        background: url(resources/profilepicture.png);
-        background-size: cover;
-        border-radius: 20px;
+    .Meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width: 900px) and (orientation: landscape) {
+            flex-direction: row;
+        }
+
+        .ProfilePicture {
+            height: 200px;
+            width: 152px;
+            background: url(resources/profilepicture.png);
+            background-size: cover;
+            border-radius: 20px;
+            margin: 5px;
+        }
+
+        .MetaDescriptions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     .InfoSection {
-        width: 70%;
+        width: 85%;
         font-size: 0.9rem;
+
+        @media (max-width: 900px) and (orientation: landscape) {
+            font-size: 0.7rem;
+        }
 
         .InfoRow {
             display: flex;
@@ -87,6 +125,7 @@
             }
 
             > span {
+                text-align: right;
                 display: flex;
                 flex-direction: row;
                 align-items: center;

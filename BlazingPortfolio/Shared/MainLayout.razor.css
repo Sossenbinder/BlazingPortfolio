@@ -1,15 +1,17 @@
 .Container {
   width: 25%;
-  height: 50%;
+  height: 60%;
   background: #fafafa;
   place-self: center;
   border-radius: 15px;
   box-shadow: 0 0 13px 2px black;
+  width: 90%;
+  height: 90%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .Container {
-    width: 90%;
-    height: 90%;
+    max-height: 620px;
+    max-width: 520px;
   }
 }
 .Container .CardContainer {
