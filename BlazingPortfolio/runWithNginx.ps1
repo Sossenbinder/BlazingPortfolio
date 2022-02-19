@@ -1,0 +1,1 @@
+docker run -d -p 9835:80 -v $PWD\nginx.conf:/etc/nginx/nginx.conf -v $PWD/bin/Release/net6.0/browser-wasm/publish/wwwroot:/wwwroot -v $PWD/error.log:/var/log/nginx/error.lognginx nginx
