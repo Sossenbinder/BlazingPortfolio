@@ -2,12 +2,6 @@
   "profiles": {
     "BlazingPortfolio.Backend": {
       "commandName": "Project"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "httpPort": 31255,
-      "useSSL": false
     }
   }
 }

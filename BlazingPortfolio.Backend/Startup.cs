@@ -1,12 +1,9 @@
-﻿using System;
-using BlazingPortfolio.Backend;
+﻿using BlazingPortfolio.Backend;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(Startup))]
-
 namespace BlazingPortfolio.Backend
 {
 	public class Startup : FunctionsStartup

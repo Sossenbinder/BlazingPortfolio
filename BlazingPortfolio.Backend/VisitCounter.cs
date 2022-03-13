@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -9,16 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.Azure.Cosmos;
 
 namespace BlazingPortfolio.Backend
 {
 	public class DailyCounter
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
+		[JsonProperty("id")] public string Id { get; set; }
 
 		public string Timestamp { get; set; }
 
@@ -45,7 +45,8 @@ namespace BlazingPortfolio.Backend
 
 		[FunctionName("AddVisit")]
 		public async Task<IActionResult> AddVisit(
-			[HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
+			[HttpTrigger(AuthorizationLevel.Anonymous, "post")]
+			HttpRequest req,
 			ILogger _)
 		{
 			var creationResult = await _cosmosClient.CreateDatabaseIfNotExistsAsync(Database);
@@ -90,7 +91,8 @@ namespace BlazingPortfolio.Backend
 
 		[FunctionName("GetVisits")]
 		public async Task<IActionResult> GetVisits(
-			[HttpTrigger(AuthorizationLevel.Function, "get")] HttpRequest req,
+			[HttpTrigger(AuthorizationLevel.Function, "get")]
+			HttpRequest req,
 			ILogger _)
 		{
 			var db = _cosmosClient.GetDatabase(Database);
