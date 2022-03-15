@@ -53,6 +53,7 @@ namespace BlazingPortfolio.Backend
 			}
 
 			var today = DateTime.UtcNow;
+			counterDict.TryGetValue(DateProvider.FormatWithDayStamp(today), out var visitsToday);
 			var visitsYesterday = GetCounterForLastDays(counterDict, today, 1);
 			var visitsLastSevenDays = GetCounterForLastDays(counterDict, today, 7);
 			var visitsThisMonth = counterDict
@@ -60,7 +61,7 @@ namespace BlazingPortfolio.Backend
 				.Where(x => x.Key.Month == today.Month)
 				.Sum(x => x.Value);
 			var visitsTotal = counterDict.Sum(x => x.Value);
-			var message = $"Visits yesterday: {visitsYesterday}\n Visits last 7 days: {visitsLastSevenDays}\n Visits this month: {visitsThisMonth}\n Visits total: {visitsTotal}";
+			var message = $"Visits today: {visitsToday}\n Visits yesterday: {visitsYesterday}\n Visits last 7 days: {visitsLastSevenDays}\n Visits this month: {visitsThisMonth}\n Visits total: {visitsTotal}";
 
 			await _botClient.SendTextMessageAsync(_configuration["Telegram_ChannelId"], message);
 		}
@@ -71,7 +72,7 @@ namespace BlazingPortfolio.Backend
 
 			for (var i = 0; i < days; ++i)
 			{
-				if (counterDict.TryGetValue(DateProvider.FormatWithDayStamp(startingDate.AddDays(-i)), out var value))
+				if (counterDict.TryGetValue(DateProvider.FormatWithDayStamp(startingDate.AddDays(-i - 1)), out var value))
 				{
 					counter += value;
 				}
