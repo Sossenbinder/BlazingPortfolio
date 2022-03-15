@@ -27,15 +27,7 @@ namespace BlazingPortfolio.Backend
 
 	public class VisitCounter
 	{
-		private const string Database = "BlazingPortfolio";
-
-		private const string Table = "Visits";
-
-		private const string PartitionKey = "/Timestamp";
-
 		private readonly CosmosClient _cosmosClient;
-
-		private static string TimeStampToday => DateTime.UtcNow.ToString("MMddyyyy");
 
 		public VisitCounter(
 			CosmosClient cosmosClient)
@@ -49,24 +41,24 @@ namespace BlazingPortfolio.Backend
 			HttpRequest req,
 			ILogger _)
 		{
-			var creationResult = await _cosmosClient.CreateDatabaseIfNotExistsAsync(Database);
+			var creationResult = await _cosmosClient.CreateDatabaseIfNotExistsAsync(Constants.Database);
 			if (!creationResult.StatusCode.IsSuccess())
 			{
 				return new InternalServerErrorResult();
 			}
 
-			var db = _cosmosClient.GetDatabase(Database);
+			var db = _cosmosClient.GetDatabase(Constants.Database);
 
-			var response = await db.CreateContainerIfNotExistsAsync(Table, PartitionKey);
+			var response = await db.CreateContainerIfNotExistsAsync(Constants.Table, Constants.PartitionKey);
 
 			if (!response.StatusCode.IsSuccess())
 			{
 				return new InternalServerErrorResult();
 			}
 
-			var container = db.GetContainer(Table);
+			var container = db.GetContainer(Constants.Table);
 
-			var dateTimeStamp = TimeStampToday;
+			var dateTimeStamp = DateProvider.TimeStampToday;
 			var pk = new PartitionKey(dateTimeStamp);
 
 			try
@@ -95,8 +87,8 @@ namespace BlazingPortfolio.Backend
 			HttpRequest req,
 			ILogger _)
 		{
-			var db = _cosmosClient.GetDatabase(Database);
-			var container = db.GetContainer(Table);
+			var db = _cosmosClient.GetDatabase(Constants.Database);
+			var container = db.GetContainer(Constants.Table);
 
 			var iterator = container.GetItemQueryIterator<DailyCounter>();
 
