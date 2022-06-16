@@ -1,1 +1,1 @@
-sudo docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt/:/certs sossenbinder/blazingportfolio
+docker run -d -p 80:80 -p 443:443 -v /etc/letsencrypt/:/certs sossenbinder/blazingportfolio
