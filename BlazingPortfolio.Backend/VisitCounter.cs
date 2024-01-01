@@ -1,18 +1,15 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web.Http;
 using BlazingPortfolio.Backend.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Functions.Worker;
 
 namespace BlazingPortfolio.Backend
 {
@@ -29,22 +26,20 @@ namespace BlazingPortfolio.Backend
 	{
 		private readonly CosmosClient _cosmosClient;
 
-		public VisitCounter(
-			CosmosClient cosmosClient)
+		public VisitCounter(CosmosClient cosmosClient)
 		{
 			_cosmosClient = cosmosClient;
 		}
 
-		[FunctionName("AddVisit")]
+		[Function("AddVisit")]
 		public async Task<IActionResult> AddVisit(
 			[HttpTrigger(AuthorizationLevel.Anonymous, "post")]
-			HttpRequest req,
-			ILogger _)
+			HttpRequest req)
 		{
 			var creationResult = await _cosmosClient.CreateDatabaseIfNotExistsAsync(Constants.Database);
 			if (!creationResult.StatusCode.IsSuccess())
 			{
-				return new InternalServerErrorResult();
+				return new StatusCodeResult(500);
 			}
 
 			var db = _cosmosClient.GetDatabase(Constants.Database);
@@ -53,7 +48,7 @@ namespace BlazingPortfolio.Backend
 
 			if (!response.StatusCode.IsSuccess())
 			{
-				return new InternalServerErrorResult();
+				return new StatusCodeResult(500);
 			}
 
 			var container = db.GetContainer(Constants.Table);

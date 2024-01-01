@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -28,15 +29,14 @@ namespace BlazingPortfolio.Backend
 			_configuration = configuration;
 		}
 
-		[FunctionName("NotifyTelegram")]
+		[Function("NotifyTelegram")]
 		public async Task NotifyTelegram(
 #if DEBUG
 			[TimerTrigger("* * * * *")]
 #elif RELEASE
 			[TimerTrigger("0 8 * * *")]
 #endif
-			TimerInfo timerInfo,
-			ILogger log)
+			TimerInfo timerInfo)
 		{
 			var db = _cosmosClient.GetDatabase(Constants.Database);
 			var container = db.GetContainer(Constants.Table);

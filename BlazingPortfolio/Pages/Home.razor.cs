@@ -33,6 +33,11 @@ namespace BlazingPortfolio.Pages
 		{
 			var client = HttpClientFactory.CreateClient();
 
+			if (_flipped)
+			{
+				return;
+			}
+
 			try
 			{
 				await client.PostAsync("https://blazingportfolio.azurewebsites.net/api/AddVisit", null);
