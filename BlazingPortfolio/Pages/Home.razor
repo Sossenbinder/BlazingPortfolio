@@ -1,117 +1,70 @@
 ﻿@page "/"
+@using Icon = Blazorise.Icon
 
-<div class="@($"Card Front {(_flipped ? "Flip" : "")}")">
+<div class="Card">
     <div class="Meta">
-        <div class="ProfilePicture"/>
         <div class="MetaDescriptions">
             <span class="Heading">Stefan Schranz</span>
             <span class="Description">
                 Software Development | Cloud Architecture | Knowledge Sharing
             </span>
+            <div class="QuickAboutMe">
+                <span>Hello👋</span>
+                <span>Thanks for stumbling onto my portfolio page. If you are interested in my persona, I invite you to learn about me, my skillset and my projects. Feel free to reach out to me through my social media links.</span>
+            </div>
             <div class="InfoSection">
                 <span class="InfoRow">
                     <span>
-                        <MaterialIcon
-                            IconName="place"/>
+                        <Icon
+                            Name="@("fa-thumbtack")"
+                            IconSize="IconSize.Large">
+                        </Icon>
                         <span>Location</span>
                     </span>
                     <span>Kirchheim unter Teck, Germany</span>
                 </span>
                 <span class="InfoRow">
                     <span>
-                        <MaterialIcon
-                            IconName="business"/>
+                        <Icon
+                            Name="@("fa-building")"
+                            IconSize="IconSize.Large">
+                        </Icon>
                         <span>Workplace</span>
                     </span>
                     <a href="https://www.sii-group.com">@@SII Technologies</a>
                 </span>
+                <span class="InfoRow">
+                    <span>
+                        <Icon
+                            Name="@("fa-calendar")"
+                            IconSize="IconSize.Large">
+                        </Icon>
+                        <span>Age</span>
+                    </span>
+                    <span>@Age</span>
+                </span>
+                <span class="InfoRow">
+                    <span>
+                        <Icon
+                            Name="@("fa-book")"
+                            IconSize="IconSize.Large">
+                        </Icon>
+                        <span>YOE</span>
+                    </span>
+                    <span>@YOE</span>
+                </span>
+                <span class="InfoRow">
+                    <span>
+                        <Icon
+                            Name="@("fa-wrench")"
+                            IconSize="IconSize.Large">
+                        </Icon>
+                        <span>Tech</span>
+                    </span>
+                    <span>C# & TS</span>
+                </span>
             </div>
-            <span
-                class="KnowledgeSkills"
-                @onclick="@(_ => _flipped = !_flipped)">
-                <MaterialIcon
-                    IconName="construction"/>
-                <span>Knowledge & Skills</span>
-            </span>
         </div>
-    </div>
-    <div class="LinkTree">
-        @{
-            foreach (var (iconUrl, link, title) in _linkItemInformations)
-            {
-                <div
-                    class="LinkBubble"
-                    @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("open", link, "_blank"))"
-                    title="@title">
-                    <img src="@iconUrl" alt="?"/>
-                </div>
-            }
-        }
-        <div
-            class="LinkBubble"
-            @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("window.location.assign", "mailto:stefan.daniel.schranz96@gmail.com"))"
-            title="Send me a mail">
-            <MaterialIcon
-                IconName="email"/>
-        </div>
-    </div>
-</div>
-<div class="@($"Card Back {(_flipped ? "Flip" : "")}")">
-    <span class="Heading">Knowledge & Skills</span>
-    <div class="InfoSection">
-        <span class="InfoRow">
-            <span>
-                <MaterialIcon
-                    IconName="menu_book"/>
-                <span>Languages</span>
-            </span>
-            <ul>
-                <li><b>C#</b></li>
-                <li><b>JS / TS</b></li>
-                <li>Kotlin</li>
-	            <li>CSS (Sass & Less)</li>
-                <li><i>Python</i></li>
-                <li><i>C++</i></li>
-                <li><i>Java</i></li>
-                <li><i>Go</i></li>
-            </ul>
-        </span>
-        <span class="InfoRow">
-            <span>
-                <MaterialIcon
-                    IconName="build"/>
-                <span>Tech</span>
-            </span>
-            <ul>
-                <li><b>.NET <i>Core</i></b></li>
-                <li><b>ASP.NET <i>Core</i></b></li>
-                <li><b>Web</b></li>
-                <li><b>Cloud</b></li>
-                <li><b>Microservices</b></li>
-                <li><b>Docker</b></li>
-                <li><b>Kubernetes</b></li>
-                <li><b>Azure Functions</b></li>
-                <li><b>Kubernetes</b></li>
-                <li><b>Testing</b></li>
-                <li><b>React</b></li>
-            </ul>
-            <ul>
-                <li><b>Azure</b></li>
-                <li><b>DB (Sql, NoSql)</b></li>
-                <li><b>Git</b></li>
-                <li><b>Blazor</b></li>
-                <li>Azure Service Fabric</li>
-                <li>AWS</li>
-                <li>Ranorex</li>
-                <li>Terraform</li>
-                <li>And much more...</li>
-            </ul>
-        </span>
-    </div>
-    <div 
-        class="LinkBubble BackButton"
-        @onclick="@(_ => _flipped = !_flipped)">
-        <MaterialIcon 
-            IconName="arrow_back"/>
+        <div class="ProfilePicture"/>
     </div>
 </div>

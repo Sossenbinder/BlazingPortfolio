@@ -1,0 +1,10 @@
+.CV {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  
+  .CVList {
+    overflow-y: auto;
+  }
+}

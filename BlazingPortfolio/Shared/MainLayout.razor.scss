@@ -1,21 +1,86 @@
-﻿.Container {
-    width: 33%;
-    height: 60%;
+﻿@use "../Pages/Home.razor" as Home;
+
+.Container {
     background: rgb(250, 250, 250);
     place-self: center;
     border-radius: 15px;
     box-shadow: 0 0 13px 2px black;
-    width: 90%;
-    height: 90%;
+    height: 100%;
+    width: 100%;
+    
+    display: grid;
+    grid-template-rows: 85% 15%;
+    grid-template-columns: 8% 92%;
+    grid-template-areas: 
+            "linktree content"
+            "links links";
 
     @media (min-width: 720px) {
-        max-height: 620px;
-        max-width: 520px;
+        max-height: 60vh;
+        max-width: 60vw;
+    }
+
+    .LinkTree {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 2em;        
+        grid-area: linktree;
+
+        .LinkBubble {
+            @include Home.btn;
+            height: 48px;
+            width: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 3px;
+
+            img {
+                height: 60%;
+                width: 60%;
+            }
+        }
     }
 
     .CardContainer {
-        height: calc(100% - 2rem);
-        position: relative;
+        display: grid;
+        place-items: center;
+        grid-area: content;
+        grid-template-rows: 100%;
+        padding: 2em;
+    }
+    
+    .LinkRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 5em;
+        align-items: center;
+        grid-area: links;
+        
+        .LinkContainer {
+            @include Home.btn;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 0.5em;
+            gap: 0.5em;
+            width: 150px;
+
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            
+            &.Selected {
+                > :not(i){
+                    text-decoration: underline;
+                }
+            }
+        }
     }
 }
 
@@ -30,19 +95,15 @@
     cursor: default;
     transition: background 0.3s ease-in-out;
 
+    .MailIcon {
+        color: mediumpurple;
+    }
+
     &:hover {
         background: rgba(255, 255, 255, 0.4);
     }
 
     ::deep span {
         font-size: 1rem;
-
-        &:nth-of-type(2) {
-            color: red;
-        }
-
-        &:nth-of-type(4) {
-            color: mediumpurple;
-        }
     }
 }

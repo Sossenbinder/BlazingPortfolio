@@ -2,7 +2,7 @@
 
 @mixin btn {
     background: $buttonColor;
-    box-shadow: #c7c6c6 0px 0px 7px 2px;
+    box-shadow: #c7c6c6 0 0 7px 2px;
     transition: box-shadow 0.2s ease-in-out;
 
     &:hover {
@@ -11,84 +11,27 @@
 }
 
 .Card {
-    position: absolute;
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     transition: transform 0.5s ease-in-out;
-
-    .Heading {
-        font-size: 2rem;
-        font-family: fangsong;
-        font-variant: small-caps;
-        margin-bottom: unset;
-    }
-
-    .Description {
-        text-align: center;
-        width: 80%;
-    }
-
-    &.Front {
-        &.Flip {
-            transform: rotateY(180deg);
-        }
-    }
-
-    &.Back {
-        transform: rotateY(180deg);
-
-        &.Flip {
-            transform: rotateY(360deg);
-        }
-    }
-
-    .LinkBubble {
-        @include btn;
-        height: 48px;
-        width: 48px;
-        display: grid;
-        place-items: center;
-        border-radius: 50px;
-        cursor: pointer;
-        margin: 0 3px;
-
-        img {
-            height: 60%;
-            width: 60%;
-        }
-    }
-
-    .BackButton {
-        @media (max-width: 900px) and (orientation: landscape) {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-        }
-    }
-
-    > * {
-        margin: 0.5rem 0;
-    }
+    gap: 2em;
 
     .Meta {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        gap: 3em;
 
         @media (max-width: 900px) and (orientation: landscape) {
             flex-direction: row;
         }
 
         .ProfilePicture {
-            height: 200px;
-            width: 152px;
+            height: 500px;
+            width: 380px;
             background: url(resources/profilepicture.png);
             background-size: cover;
             border-radius: 20px;
@@ -100,53 +43,49 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-        }
-    }
-
-    .InfoSection {
-        width: 85%;
-        font-size: 0.9rem;
-
-        @media (max-width: 900px) and (orientation: landscape) {
-            font-size: 0.7rem;
-        }
-
-        .InfoRow {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-
-            .MultiLineSection {
+            gap: 2.5em;
+            
+            .QuickAboutMe {
                 display: flex;
                 flex-direction: column;
-                align-items: end;
-                justify-content: space-between;
+                max-width: 500px;
+                gap: 1.5em;
+                
+                > span:nth-child(1) {
+                    align-self: center;
+                    font-weight: bolder;
+                }
             }
 
-            > span {
-                text-align: right;
+            .Heading {
+                font-size: 2rem;
+                font-family: fangsong;
+                font-variant: small-caps;
+                margin-bottom: unset;
+            }
+
+            .Description {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .InfoSection {                
                 display: flex;
-                flex-direction: row;
-                align-items: center;
+                flex-direction: column;
+                gap: 0.8em;                
+                width: 100%;
+
+                @media (max-width: 900px) and (orientation: landscape) {
+                    font-size: 0.7rem;
+                }
+
+                .InfoRow {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                }
             }
         }
-    }
-
-    .KnowledgeSkills {
-        @include btn;
-        border: 1px solid grey;
-        border-radius: 15px;
-        padding: 2px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .LinkTree {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
     }
 }

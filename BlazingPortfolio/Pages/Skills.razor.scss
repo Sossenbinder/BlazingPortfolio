@@ -1,0 +1,33 @@
+.Skills {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 3em;
+  
+  .SkillsSection {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    height: 80%;
+
+    .SkillsList {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+      height: 100%;
+      width: 100%;
+
+      @media (max-width: 900px) and (orientation: landscape) {
+        font-size: 0.7rem;
+      }
+
+      > ul {
+        height: 90%;
+        display: flex;
+        flex-flow: wrap column;
+        column-gap: 4em;
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 
 namespace BlazingPortfolio.Pages
 {
-	internal record LinkItemInformation(string IconUrl, string Link, string Title);
 
 	public partial class Home
 	{
@@ -12,28 +12,21 @@ namespace BlazingPortfolio.Pages
 
 		[Inject]
 		public IHttpClientFactory HttpClientFactory { get; set; }
-
-		private List<LinkItemInformation> _linkItemInformations;
+		
+		[Inject]
+		private IWebAssemblyHostEnvironment HostEnvironment { get; set; }
 
 		private bool _flipped;
 
-		protected override void OnInitialized()
-		{
-			_linkItemInformations = new List<LinkItemInformation>()
-			{
-				new("resources/medium.png", "https://stefansch.medium.com", "Blog (Medium)"),
-				new("resources/github.png", "https://github.com/Sossenbinder", "Github"),
-				new("resources/twitter.png", "https://twitter.com/DotSchranz", "Twitter"),
-				new("resources/linkedin.png", "https://www.linkedin.com/in/stefan-schranz-1aa8a6196/", "LinkedIn"),
-				new ("resources/telegram.png", "https://telegram.me/Sossenbinder", "Telegram"),
-			};
-		}
+		private int Age => (int)((DateTime.UtcNow - DateTime.Parse("1996-06-06")).TotalDays / 365.2425);
+		
+		private int YOE => (int)((DateTime.UtcNow - DateTime.Parse("2017-10-01")).TotalDays / 365.2425);
 
 		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
 			var client = HttpClientFactory.CreateClient();
 
-			if (_flipped)
+			if (_flipped || HostEnvironment.IsDevelopment())
 			{
 				return;
 			}

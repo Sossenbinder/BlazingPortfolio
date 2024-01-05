@@ -1,18 +1,96 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="Container">
+    <div class="LinkTree">
+        @{
+            foreach (var (iconUrl, link, title) in _linkItemInformations)
+            {
+                <div
+                    class="LinkBubble"
+                    @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("open", link, "_blank"))"
+                    title="@title">
+                    <img src="@iconUrl" alt="?"/>
+                </div>
+            }
+        }
+        <div
+            class="LinkBubble"
+            @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("window.location.assign", "mailto:stefan.daniel.schranz96@gmail.com"))"
+            title="Send me a mail">
+            <Icon
+                IconSize="IconSize.Large"
+                Name="@("fa-envelope")"></Icon>
+        </div>
+    </div>
     <div class="CardContainer">
         @Body
+    </div>
+    <div class="LinkRow">
+        @foreach (var pageLink in _pageLinks)
+        {
+            <div class=@($"LinkContainer {(pageLink.Link == _currentLink ? "Selected" : "")}") @onclick="() => NavigateToLink(pageLink)">
+                <Icon Name="pageLink.Icon"
+                      IconSize="IconSize.Large">
+                </Icon>
+                <span>
+                    @pageLink.Text
+                </span>
+            </div>
+        }
     </div>
 </div>
 <span class="BlazorWatermark">
     <span>Made with</span>
-    <MaterialIcon
-        IconName="favorite"
-        MaterialIconType="MaterialIconType.Filled"/>
+    <Icon
+        Name="IconName.Heart"
+        TextColor="TextColor.Danger"></Icon>
     <span>and</span>
-    <MaterialIcon
-        IconName="alternate_email"
-        MaterialIconType="MaterialIconType.Filled"/>
+    <span class="MailIcon">@@</span>
     <span>Blazor</span>
 </span>
+
+@code
+{
+    private record LinkItemInformation(string IconUrl, string Link, string Title);
+
+    private record PageLinkInformation(
+        string Text,
+        string Link,
+        IconName Icon);
+
+    [Inject]
+    public IJSRuntime JsRuntime { get; set; }
+    
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    private string _currentLink = "";
+
+    private readonly List<LinkItemInformation> _linkItemInformations =
+    [
+        new("resources/medium.png", "https://stefansch.medium.com", "Blog (Medium)"),
+        new("resources/github.png", "https://github.com/Sossenbinder", "Github"),
+        new("resources/twitter.png", "https://twitter.com/DotSchranz", "Twitter"),
+        new("resources/linkedin.png", "https://www.linkedin.com/in/stefan-schranz-1aa8a6196/", "LinkedIn"),
+        new("resources/telegram.png", "https://telegram.me/Sossenbinder", "Telegram")
+    ];
+
+    private readonly List<PageLinkInformation> _pageLinks =
+    [
+        new("Home", "", IconName.Home),
+        new("About me", "aboutme", IconName.User),
+        new("Skillset", "skills", IconName.Wrench),
+        new("CV", "cv", IconName.FileAlt),
+    ];
+
+    protected override void OnInitialized()
+    {
+        _currentLink = NavigationManager.Uri[(NavigationManager.Uri.LastIndexOf('/') + 1)..];
+    }
+
+    private void NavigateToLink(PageLinkInformation pageLinkInformation)
+    {
+        NavigationManager.NavigateTo(pageLinkInformation.Link);
+        _currentLink = pageLinkInformation.Link;
+    }
+}

@@ -1,22 +1,156 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: transform 0.5s ease-in-out;
+  gap: 2em;
+}
+.Card .Meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3em;
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .Card .Meta {
+    flex-direction: row;
+  }
+}
+.Card .Meta .ProfilePicture {
+  height: 500px;
+  width: 380px;
+  background: url(resources/profilepicture.png);
+  background-size: cover;
+  border-radius: 20px;
+  margin: 5px;
+}
+.Card .Meta .MetaDescriptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5em;
+}
+.Card .Meta .MetaDescriptions .QuickAboutMe {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 1.5em;
+}
+.Card .Meta .MetaDescriptions .QuickAboutMe > span:nth-child(1) {
+  align-self: center;
+  font-weight: bolder;
+}
+.Card .Meta .MetaDescriptions .Heading {
+  font-size: 2rem;
+  font-family: fangsong;
+  font-variant: small-caps;
+  margin-bottom: unset;
+}
+.Card .Meta .MetaDescriptions .Description {
+  text-align: center;
+  font-weight: bold;
+}
+.Card .Meta .MetaDescriptions .InfoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  width: 100%;
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .Card .Meta .MetaDescriptions .InfoSection {
+    font-size: 0.7rem;
+  }
+}
+.Card .Meta .MetaDescriptions .InfoSection .InfoRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .Container {
-  width: 33%;
-  height: 60%;
   background: #fafafa;
   place-self: center;
   border-radius: 15px;
   box-shadow: 0 0 13px 2px black;
-  width: 90%;
-  height: 90%;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 85% 15%;
+  grid-template-columns: 8% 92%;
+  grid-template-areas: "linktree content" "links links";
 }
 @media (min-width: 720px) {
   .Container {
-    max-height: 620px;
-    max-width: 520px;
+    max-height: 60vh;
+    max-width: 60vw;
   }
 }
+.Container .LinkTree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2em;
+  grid-area: linktree;
+}
+.Container .LinkTree .LinkBubble {
+  background: #e8f1f0;
+  box-shadow: #c7c6c6 0 0 7px 2px;
+  transition: box-shadow 0.2s ease-in-out;
+  height: 48px;
+  width: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 0 3px;
+}
+.Container .LinkTree .LinkBubble:hover {
+  box-shadow: #ddd9d9 2px -2px 7px 2px;
+}
+.Container .LinkTree .LinkBubble img {
+  height: 60%;
+  width: 60%;
+}
 .Container .CardContainer {
-  height: calc(100% - 2rem);
-  position: relative;
+  display: grid;
+  place-items: center;
+  grid-area: content;
+  grid-template-rows: 100%;
+  padding: 2em;
+}
+.Container .LinkRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 5em;
+  align-items: center;
+  grid-area: links;
+}
+.Container .LinkRow .LinkContainer {
+  background: #e8f1f0;
+  box-shadow: #c7c6c6 0 0 7px 2px;
+  transition: box-shadow 0.2s ease-in-out;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 0.5em;
+  gap: 0.5em;
+  width: 150px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.Container .LinkRow .LinkContainer:hover {
+  box-shadow: #ddd9d9 2px -2px 7px 2px;
+}
+.Container .LinkRow .LinkContainer.Selected > :not(i) {
+  text-decoration: underline;
 }
 
 .BlazorWatermark {
@@ -30,17 +164,14 @@
   cursor: default;
   transition: background 0.3s ease-in-out;
 }
+.BlazorWatermark .MailIcon {
+  color: mediumpurple;
+}
 .BlazorWatermark:hover {
   background: rgba(255, 255, 255, 0.4);
 }
 .BlazorWatermark ::deep span {
   font-size: 1rem;
-}
-.BlazorWatermark ::deep span:nth-of-type(2) {
-  color: red;
-}
-.BlazorWatermark ::deep span:nth-of-type(4) {
-  color: mediumpurple;
 }
 
 /*# sourceMappingURL=MainLayout.razor.css.map */

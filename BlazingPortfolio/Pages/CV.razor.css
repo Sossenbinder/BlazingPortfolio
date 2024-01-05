@@ -1,0 +1,11 @@
+.CV {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.CV .CVList {
+  overflow-y: auto;
+}
+
+/*# sourceMappingURL=CV.razor.css.map */
