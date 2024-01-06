@@ -22,6 +22,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./BlazingPortfolio
-          file: ./Dockerfile
+          file: ./BlazingPortfolio/Dockerfile
           push: true
           tags: sossenbinder/blazingportfolio
