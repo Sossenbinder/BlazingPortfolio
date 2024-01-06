@@ -1,0 +1,28 @@
+name: Build and depoy the blazingportfolio frontend
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: sossenbinder
+          password: ${{ secrets.BLAZOR_PUSH_GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./BlazingPortfolio
+          file: ./Dockerfile
+          push: true
+          tags: sossenbinder/blazingportfolio
