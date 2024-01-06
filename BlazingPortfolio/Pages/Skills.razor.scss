@@ -23,10 +23,7 @@
       }
 
       > ul {
-        height: 90%;
-        display: flex;
-        flex-flow: wrap column;
-        column-gap: 4em;
+        overflow-y: auto;
       }
     }
   }

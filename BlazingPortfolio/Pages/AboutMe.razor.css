@@ -1,7 +1,11 @@
 .AboutMe {
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 2em;
+}
+.AboutMe .Content {
+  overflow-y: auto;
 }
 
 /*# sourceMappingURL=AboutMe.razor.css.map */

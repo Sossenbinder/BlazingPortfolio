@@ -1,22 +1,18 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["BlazingPortfolio.csproj", ""]
+RUN dotnet restore "BlazingPortfolio.csproj"
+COPY . .
+RUN dotnet build "BlazingPortfolio.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "BlazingPortfolio.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM nginx
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["BlazingPortfolio/BlazingPortfolio.csproj", "BlazingPortfolio/"]
-RUN dotnet restore "BlazingPortfolio/BlazingPortfolio.csproj"
-COPY . .
-WORKDIR "/src/BlazingPortfolio"
-RUN dotnet build "BlazingPortfolio.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "BlazingPortfolio.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "BlazingPortfolio.dll"]
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=publish /app/publish/wwwroot wwwroot

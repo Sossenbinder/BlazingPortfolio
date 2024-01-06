@@ -1,4 +1,6 @@
 .Card {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,41 +9,52 @@
   gap: 2em;
 }
 .Card .Meta {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 3em;
 }
-@media (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 900px) {
   .Card .Meta {
-    flex-direction: row;
+    flex-direction: column;
   }
 }
-.Card .Meta .ProfilePicture {
-  height: 500px;
-  width: 380px;
-  background: url(resources/profilepicture.png);
-  background-size: cover;
-  border-radius: 20px;
+.Card .Meta .ProfilePictureContainer {
+  height: 100%;
+  width: 100%;
   margin: 5px;
+  position: relative;
+  flex: 1;
+}
+.Card .Meta .ProfilePictureContainer .ProfilePicture {
+  position: absolute;
+  border-radius: 20px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .Card .Meta .MetaDescriptions {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 2.5em;
+  flex: 1;
+  flex-grow: 3;
 }
-.Card .Meta .MetaDescriptions .QuickAboutMe {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  gap: 1.5em;
-}
-.Card .Meta .MetaDescriptions .QuickAboutMe > span:nth-child(1) {
-  align-self: center;
-  font-weight: bolder;
+@media (max-width: 900px) {
+  .Card .Meta .MetaDescriptions {
+    overflow-y: scroll;
+  }
 }
 .Card .Meta .MetaDescriptions .Heading {
   font-size: 2rem;
@@ -49,22 +62,41 @@
   font-variant: small-caps;
   margin-bottom: unset;
 }
-.Card .Meta .MetaDescriptions .Description {
+.Card .Meta .MetaDescriptions .MetaDescriptionsList {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5em;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 1.5em;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe > span:nth-child(1) {
+  align-self: center;
+  font-weight: bolder;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .Description {
   text-align: center;
   font-weight: bold;
 }
-.Card .Meta .MetaDescriptions .InfoSection {
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection {
   display: flex;
   flex-direction: column;
   gap: 0.8em;
   width: 100%;
 }
 @media (max-width: 900px) and (orientation: landscape) {
-  .Card .Meta .MetaDescriptions .InfoSection {
+  .Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection {
     font-size: 0.7rem;
   }
 }
-.Card .Meta .MetaDescriptions .InfoSection .InfoRow {
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection .InfoRow {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -89,6 +121,15 @@
     max-width: 60vw;
   }
 }
+@media (max-width: 720px) {
+  .Container {
+    border-radius: unset;
+    grid-template-rows: 80% 10% 10%;
+    grid-template-columns: 100%;
+    grid-template-areas: "content" "links" "linktree";
+    overflow-x: hidden;
+  }
+}
 .Container .LinkTree {
   display: flex;
   flex-direction: column;
@@ -96,6 +137,12 @@
   justify-content: space-evenly;
   gap: 2em;
   grid-area: linktree;
+}
+@media (max-width: 720px) {
+  .Container .LinkTree {
+    flex-direction: row;
+    gap: 1em;
+  }
 }
 .Container .LinkTree .LinkBubble {
   background: #e8f1f0;
@@ -111,6 +158,16 @@
 }
 .Container .LinkTree .LinkBubble:hover {
   box-shadow: #ddd9d9 2px -2px 7px 2px;
+}
+@media (max-width: 720px) {
+  .Container .LinkTree .LinkBubble {
+    height: 35px;
+    width: 35px;
+  }
+  .Container .LinkTree .LinkBubble > img {
+    height: 70%;
+    width: 70%;
+  }
 }
 .Container .LinkTree .LinkBubble img {
   height: 60%;
@@ -149,6 +206,14 @@
 .Container .LinkRow .LinkContainer:hover {
   box-shadow: #ddd9d9 2px -2px 7px 2px;
 }
+@media (max-width: 720px) {
+  .Container .LinkRow .LinkContainer {
+    width: 50px;
+  }
+  .Container .LinkRow .LinkContainer > span {
+    display: none;
+  }
+}
 .Container .LinkRow .LinkContainer.Selected > :not(i) {
   text-decoration: underline;
 }
@@ -163,6 +228,11 @@
   border-top-left-radius: 5px;
   cursor: default;
   transition: background 0.3s ease-in-out;
+}
+@media (max-width: 720px) {
+  .BlazorWatermark {
+    display: none;
+  }
 }
 .BlazorWatermark .MailIcon {
   color: mediumpurple;

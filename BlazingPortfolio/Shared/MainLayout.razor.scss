@@ -19,6 +19,17 @@
         max-height: 60vh;
         max-width: 60vw;
     }
+    
+    @media (max-width: 720px) {
+        border-radius: unset;
+        grid-template-rows: 80% 10% 10%;
+        grid-template-columns: 100%;
+        grid-template-areas: 
+            "content"
+            "links"
+            "linktree";
+        overflow-x: hidden;
+    }     
 
     .LinkTree {
         display: flex;
@@ -27,6 +38,11 @@
         justify-content: space-evenly;
         gap: 2em;        
         grid-area: linktree;
+
+        @media (max-width: 720px) {
+            flex-direction: row;
+            gap: 1em;
+        }
 
         .LinkBubble {
             @include Home.btn;
@@ -37,6 +53,16 @@
             border-radius: 50px;
             cursor: pointer;
             margin: 0 3px;
+
+            @media (max-width: 720px) {
+                height: 35px;
+                width: 35px;
+                
+                > img {
+                    height: 70%;
+                    width: 70%;
+                }
+            }
 
             img {
                 height: 60%;
@@ -74,7 +100,15 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            
+
+
+            @media (max-width: 720px) {
+                width: 50px;
+                > span {
+                    display: none;
+                }
+            }
+
             &.Selected {
                 > :not(i){
                     text-decoration: underline;
@@ -85,6 +119,12 @@
 }
 
 .BlazorWatermark {
+
+
+    @media (max-width: 720px) {
+        display: none;
+    }
+    
     position: fixed;
     bottom: 0px;
     right: 0px;
