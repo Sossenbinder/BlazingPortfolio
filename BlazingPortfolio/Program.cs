@@ -1,8 +1,17 @@
+using BlazorStatic;
 using BlazingPortfolio;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
+var builder = WebApplication.CreateBuilder(args);
 
-builder.RootComponents.Add<App>("#app");
+builder.WebHost.UseStaticWebAssets();
+builder.Services.AddRazorComponents();
+builder.Services.AddBlazorStaticService(opt => { });
 
-await builder.Build().RunAsync();
+var app = builder.Build();
+
+app.UseStaticFiles();
+app.UseAntiforgery();
+app.MapRazorComponents<App>();
+app.UseBlazorStaticGenerator(shutdownApp: !app.Environment.IsDevelopment());
+
+app.Run();

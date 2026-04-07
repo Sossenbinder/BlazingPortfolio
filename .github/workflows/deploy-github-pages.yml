@@ -7,18 +7,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,22 +19,15 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '9.0.x'
 
-      - name: Publish Blazor WASM
-        run: dotnet publish BlazingPortfolio/BlazingPortfolio.csproj -c Release -o output
+      - name: Generate static site
+        run: dotnet run --project BlazingPortfolio/BlazingPortfolio.csproj --configuration Release
 
-      - name: Add .nojekyll
-        run: touch output/wwwroot/.nojekyll
-
-      - name: Copy index.html to 404.html for SPA routing
-        run: cp output/wwwroot/index.html output/wwwroot/404.html
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: output/wwwroot
+      - name: Add CNAME for custom domain
+        run: echo 'dotschranz.net' > BlazingPortfolio/output/CNAME
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: BlazingPortfolio/output

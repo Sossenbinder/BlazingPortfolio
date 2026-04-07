@@ -105,25 +105,20 @@
 
 .Container {
   background: #fafafa;
-  place-self: center;
   border-radius: 15px;
   box-shadow: 0 0 13px 2px black;
-  height: 100%;
-  width: 100%;
+  height: 60vh;
+  width: 60vw;
   display: grid;
   grid-template-rows: 85% 15%;
   grid-template-columns: 8% 92%;
   grid-template-areas: "linktree content" "links links";
 }
-@media (min-width: 720px) {
-  .Container {
-    max-height: 60vh;
-    max-width: 60vw;
-  }
-}
 @media (max-width: 720px) {
   .Container {
     border-radius: unset;
+    height: 100vh;
+    width: 100vw;
     grid-template-rows: 80% 10% 10%;
     grid-template-columns: 100%;
     grid-template-areas: "content" "links" "linktree";
@@ -143,6 +138,11 @@
     flex-direction: row;
     gap: 1em;
   }
+}
+a.LinkBubble,
+a.LinkContainer {
+  text-decoration: none;
+  color: inherit;
 }
 .Container .LinkTree .LinkBubble {
   background: #e8f1f0;

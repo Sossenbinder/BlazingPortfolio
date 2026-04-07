@@ -1,24 +1,17 @@
 @inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 
 <div class="Container">
     <div class="LinkTree">
-        @{
-            foreach (var (iconUrl, link, title) in _linkItemInformations)
-            {
-                <div
-                    class="LinkBubble"
-                    @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("open", link, "_blank"))"
-                    title="@title">
-                    <img src="@iconUrl" alt="?"/>
-                </div>
-            }
+        @foreach (var (iconUrl, link, title) in _linkItemInformations)
+        {
+            <a class="LinkBubble" href="@link" target="_blank" title="@title">
+                <img src="@iconUrl" alt="?"/>
+            </a>
         }
-        <div
-            class="LinkBubble"
-            @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("window.location.assign", "mailto:stefan.daniel.schranz96@gmail.com"))"
-            title="Send me a mail">
+        <a class="LinkBubble" href="mailto:stefan.daniel.schranz96@gmail.com" title="Send me a mail">
             <i class="fas fa-envelope fa-lg"></i>
-        </div>
+        </a>
     </div>
     <div class="CardContainer">
         @Body
@@ -26,12 +19,12 @@
     <div class="LinkRow">
         @foreach (var pageLink in _pageLinks)
         {
-            <div class=@($"LinkContainer {(pageLink.Link == _currentLink ? "Selected" : "")}") @onclick="() => NavigateToLink(pageLink)">
+            <a class="LinkContainer @(IsCurrentPage(pageLink.Link) ? "Selected" : "")" href="/@pageLink.Link">
                 <i class="@pageLink.IconClass fa-lg"></i>
                 <span>
                     @pageLink.Text
                 </span>
-            </div>
+            </a>
         }
     </div>
 </div>
@@ -52,14 +45,6 @@
         string Link,
         string IconClass);
 
-    [Inject]
-    public IJSRuntime JsRuntime { get; set; }
-
-    [Inject]
-    public NavigationManager NavigationManager { get; set; }
-
-    private string _currentLink = "";
-
     private readonly List<LinkItemInformation> _linkItemInformations =
     [
         new("resources/medium.png", "https://stefansch.medium.com", "Blog (Medium)"),
@@ -77,14 +62,9 @@
         new("CV", "cv", "fas fa-file-alt"),
     ];
 
-    protected override void OnInitialized()
+    private bool IsCurrentPage(string link)
     {
-        _currentLink = NavigationManager.Uri[(NavigationManager.Uri.LastIndexOf('/') + 1)..];
-    }
-
-    private void NavigateToLink(PageLinkInformation pageLinkInformation)
-    {
-        NavigationManager.NavigateTo(pageLinkInformation.Link);
-        _currentLink = pageLinkInformation.Link;
+        var path = NavigationManager.ToAbsoluteUri(NavigationManager.Uri).AbsolutePath.Trim('/');
+        return path == link;
     }
 }
