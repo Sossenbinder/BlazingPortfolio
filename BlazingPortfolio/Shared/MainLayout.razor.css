@@ -109,6 +109,10 @@
   box-shadow: 0 0 13px 2px black;
   height: 60vh;
   width: 60vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-rows: 85% 15%;
   grid-template-columns: 8% 92%;
@@ -141,8 +145,8 @@
 }
 a.LinkBubble,
 a.LinkContainer {
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none !important;
+  color: inherit !important;
 }
 .Container .LinkTree .LinkBubble {
   background: #e8f1f0;
