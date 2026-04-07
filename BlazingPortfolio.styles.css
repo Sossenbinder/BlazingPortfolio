@@ -1,0 +1,410 @@
+/* /Pages/AboutMe.razor.rz.scp.css */
+.AboutMe[b-0juv6ncj6v] {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.AboutMe .Content[b-0juv6ncj6v] {
+  overflow-y: auto;
+}
+
+/*# sourceMappingURL=AboutMe.razor.css.map */
+/* /Pages/CV.razor.rz.scp.css */
+.CV[b-z9cc3d5w4f] {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.CV .CVList[b-z9cc3d5w4f] {
+  overflow-y: auto;
+}
+
+/*# sourceMappingURL=CV.razor.css.map */
+/* /Pages/Home.razor.rz.scp.css */
+.Card[b-h95zl6p0wt] {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: transform 0.5s ease-in-out;
+  gap: 2em;
+}
+.Card .Meta[b-h95zl6p0wt] {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3em;
+}
+@media (max-width: 900px) {
+  .Card .Meta[b-h95zl6p0wt] {
+    flex-direction: column;
+  }
+}
+.Card .Meta .ProfilePictureContainer[b-h95zl6p0wt] {
+  height: 100%;
+  width: 100%;
+  margin: 5px;
+  position: relative;
+  flex: 1;
+}
+.Card .Meta .ProfilePictureContainer .ProfilePicture[b-h95zl6p0wt] {
+  position: absolute;
+  border-radius: 20px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Card .Meta .MetaDescriptions[b-h95zl6p0wt] {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5em;
+  flex: 1;
+  flex-grow: 3;
+}
+@media (max-width: 900px) {
+  .Card .Meta .MetaDescriptions[b-h95zl6p0wt] {
+    overflow-y: scroll;
+  }
+}
+.Card .Meta .MetaDescriptions .Heading[b-h95zl6p0wt] {
+  font-size: 2rem;
+  font-family: fangsong;
+  font-variant: small-caps;
+  margin-bottom: unset;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList[b-h95zl6p0wt] {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5em;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe[b-h95zl6p0wt] {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 1.5em;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe > span:nth-child(1)[b-h95zl6p0wt] {
+  align-self: center;
+  font-weight: bolder;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .Description[b-h95zl6p0wt] {
+  text-align: center;
+  font-weight: bold;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection[b-h95zl6p0wt] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  width: 100%;
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection[b-h95zl6p0wt] {
+    font-size: 0.7rem;
+  }
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection .InfoRow[b-h95zl6p0wt] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=Home.razor.css.map */
+/* /Pages/Skills.razor.rz.scp.css */
+.Skills[b-l90gp7zxv7] {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 3em;
+}
+.Skills .SkillsSection[b-l90gp7zxv7] {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  height: 80%;
+}
+.Skills .SkillsSection .SkillsList[b-l90gp7zxv7] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  height: 100%;
+  width: 100%;
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .Skills .SkillsSection .SkillsList[b-l90gp7zxv7] {
+    font-size: 0.7rem;
+  }
+}
+.Skills .SkillsSection .SkillsList > ul[b-l90gp7zxv7] {
+  overflow-y: auto;
+}
+
+/*# sourceMappingURL=Skills.razor.css.map */
+/* /Shared/MainLayout.razor.rz.scp.css */
+.Card[b-xnxb2d2ym9] {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: transform 0.5s ease-in-out;
+  gap: 2em;
+}
+.Card .Meta[b-xnxb2d2ym9] {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3em;
+}
+@media (max-width: 900px) {
+  .Card .Meta[b-xnxb2d2ym9] {
+    flex-direction: column;
+  }
+}
+.Card .Meta .ProfilePictureContainer[b-xnxb2d2ym9] {
+  height: 100%;
+  width: 100%;
+  margin: 5px;
+  position: relative;
+  flex: 1;
+}
+.Card .Meta .ProfilePictureContainer .ProfilePicture[b-xnxb2d2ym9] {
+  position: absolute;
+  border-radius: 20px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Card .Meta .MetaDescriptions[b-xnxb2d2ym9] {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5em;
+  flex: 1;
+  flex-grow: 3;
+}
+@media (max-width: 900px) {
+  .Card .Meta .MetaDescriptions[b-xnxb2d2ym9] {
+    overflow-y: scroll;
+  }
+}
+.Card .Meta .MetaDescriptions .Heading[b-xnxb2d2ym9] {
+  font-size: 2rem;
+  font-family: fangsong;
+  font-variant: small-caps;
+  margin-bottom: unset;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList[b-xnxb2d2ym9] {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5em;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe[b-xnxb2d2ym9] {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 1.5em;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe > span:nth-child(1)[b-xnxb2d2ym9] {
+  align-self: center;
+  font-weight: bolder;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .Description[b-xnxb2d2ym9] {
+  text-align: center;
+  font-weight: bold;
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection[b-xnxb2d2ym9] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  width: 100%;
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection[b-xnxb2d2ym9] {
+    font-size: 0.7rem;
+  }
+}
+.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection .InfoRow[b-xnxb2d2ym9] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Container[b-xnxb2d2ym9] {
+  background: #fafafa;
+  border-radius: 15px;
+  box-shadow: 0 0 13px 2px black;
+  height: 60vh;
+  width: 60vw;
+  display: grid;
+  grid-template-rows: 85% 15%;
+  grid-template-columns: 8% 92%;
+  grid-template-areas: "linktree content" "links links";
+}
+@media (max-width: 720px) {
+  .Container[b-xnxb2d2ym9] {
+    border-radius: unset;
+    height: 100vh;
+    width: 100vw;
+    grid-template-rows: 80% 10% 10%;
+    grid-template-columns: 100%;
+    grid-template-areas: "content" "links" "linktree";
+    overflow-x: hidden;
+  }
+}
+.Container .LinkTree[b-xnxb2d2ym9] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2em;
+  grid-area: linktree;
+}
+@media (max-width: 720px) {
+  .Container .LinkTree[b-xnxb2d2ym9] {
+    flex-direction: row;
+    gap: 1em;
+  }
+}
+a.LinkBubble[b-xnxb2d2ym9],
+a.LinkContainer[b-xnxb2d2ym9] {
+  text-decoration: none;
+  color: inherit;
+}
+.Container .LinkTree .LinkBubble[b-xnxb2d2ym9] {
+  background: #e8f1f0;
+  box-shadow: #c7c6c6 0 0 7px 2px;
+  transition: box-shadow 0.2s ease-in-out;
+  height: 48px;
+  width: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 0 3px;
+}
+.Container .LinkTree .LinkBubble:hover[b-xnxb2d2ym9] {
+  box-shadow: #ddd9d9 2px -2px 7px 2px;
+}
+@media (max-width: 720px) {
+  .Container .LinkTree .LinkBubble[b-xnxb2d2ym9] {
+    height: 35px;
+    width: 35px;
+  }
+  .Container .LinkTree .LinkBubble > img[b-xnxb2d2ym9] {
+    height: 70%;
+    width: 70%;
+  }
+}
+.Container .LinkTree .LinkBubble img[b-xnxb2d2ym9] {
+  height: 60%;
+  width: 60%;
+}
+.Container .CardContainer[b-xnxb2d2ym9] {
+  display: grid;
+  place-items: center;
+  grid-area: content;
+  grid-template-rows: 100%;
+  padding: 2em;
+}
+.Container .LinkRow[b-xnxb2d2ym9] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 5em;
+  align-items: center;
+  grid-area: links;
+}
+.Container .LinkRow .LinkContainer[b-xnxb2d2ym9] {
+  background: #e8f1f0;
+  box-shadow: #c7c6c6 0 0 7px 2px;
+  transition: box-shadow 0.2s ease-in-out;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 0.5em;
+  gap: 0.5em;
+  width: 150px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.Container .LinkRow .LinkContainer:hover[b-xnxb2d2ym9] {
+  box-shadow: #ddd9d9 2px -2px 7px 2px;
+}
+@media (max-width: 720px) {
+  .Container .LinkRow .LinkContainer[b-xnxb2d2ym9] {
+    width: 50px;
+  }
+  .Container .LinkRow .LinkContainer > span[b-xnxb2d2ym9] {
+    display: none;
+  }
+}
+.Container .LinkRow .LinkContainer.Selected > :not(i)[b-xnxb2d2ym9] {
+  text-decoration: underline;
+}
+
+.BlazorWatermark[b-xnxb2d2ym9] {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  padding: 3px;
+  font-size: 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-top-left-radius: 5px;
+  cursor: default;
+  transition: background 0.3s ease-in-out;
+}
+@media (max-width: 720px) {
+  .BlazorWatermark[b-xnxb2d2ym9] {
+    display: none;
+  }
+}
+.BlazorWatermark .MailIcon[b-xnxb2d2ym9] {
+  color: mediumpurple;
+}
+.BlazorWatermark:hover[b-xnxb2d2ym9] {
+  background: rgba(255, 255, 255, 0.4);
+}
+.BlazorWatermark[b-xnxb2d2ym9]  span {
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=MainLayout.razor.css.map */
