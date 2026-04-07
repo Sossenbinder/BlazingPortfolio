@@ -7,10 +7,18 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,7 +37,11 @@ jobs:
       - name: Add CNAME for custom domain
         run: echo 'dotschranz.net' > BlazingPortfolio/output/CNAME
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder: BlazingPortfolio/output
+          path: BlazingPortfolio/output
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
