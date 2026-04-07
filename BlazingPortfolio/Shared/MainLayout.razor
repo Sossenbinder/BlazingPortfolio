@@ -1,4 +1,4 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
 
 <div class="Container">
     <div class="LinkTree">
@@ -17,9 +17,7 @@
             class="LinkBubble"
             @onclick="@(async _ => await JsRuntime.InvokeVoidAsync("window.location.assign", "mailto:stefan.daniel.schranz96@gmail.com"))"
             title="Send me a mail">
-            <Icon
-                IconSize="IconSize.Large"
-                Name="@("fa-envelope")"></Icon>
+            <i class="fas fa-envelope fa-lg"></i>
         </div>
     </div>
     <div class="CardContainer">
@@ -29,9 +27,7 @@
         @foreach (var pageLink in _pageLinks)
         {
             <div class=@($"LinkContainer {(pageLink.Link == _currentLink ? "Selected" : "")}") @onclick="() => NavigateToLink(pageLink)">
-                <Icon Name="pageLink.Icon"
-                      IconSize="IconSize.Large">
-                </Icon>
+                <i class="@pageLink.IconClass fa-lg"></i>
                 <span>
                     @pageLink.Text
                 </span>
@@ -41,9 +37,7 @@
 </div>
 <span class="BlazorWatermark">
     <span>Made with</span>
-    <Icon
-        Name="IconName.Heart"
-        TextColor="TextColor.Danger"></Icon>
+    <i class="fas fa-heart" style="color: red;"></i>
     <span>and</span>
     <span class="MailIcon">@@</span>
     <span>Blazor</span>
@@ -56,11 +50,11 @@
     private record PageLinkInformation(
         string Text,
         string Link,
-        IconName Icon);
+        string IconClass);
 
     [Inject]
     public IJSRuntime JsRuntime { get; set; }
-    
+
     [Inject]
     public NavigationManager NavigationManager { get; set; }
 
@@ -77,10 +71,10 @@
 
     private readonly List<PageLinkInformation> _pageLinks =
     [
-        new("Home", "", IconName.Home),
-        new("About me", "aboutme", IconName.User),
-        new("Skillset", "skills", IconName.Wrench),
-        new("CV", "cv", IconName.FileAlt),
+        new("Home", "", "fas fa-home"),
+        new("About me", "aboutme", "fas fa-user"),
+        new("Skillset", "skills", "fas fa-wrench"),
+        new("CV", "cv", "fas fa-file-alt"),
     ];
 
     protected override void OnInitialized()
