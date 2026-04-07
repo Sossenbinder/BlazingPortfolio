@@ -23,6 +23,8 @@ jobs:
 
       - name: Generate static site
         run: dotnet run --project BlazingPortfolio/BlazingPortfolio.csproj --configuration Release
+        env:
+          ASPNETCORE_ENVIRONMENT: Production
 
       - name: Add CNAME for custom domain
         run: echo 'dotschranz.net' > BlazingPortfolio/output/CNAME
