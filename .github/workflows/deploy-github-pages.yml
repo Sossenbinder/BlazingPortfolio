@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Generate static site
-        run: dotnet run --project BlazingPortfolio/BlazingPortfolio.csproj --configuration Release
+        run: dotnet run --project BlazingPortfolio/BlazingPortfolio.csproj --configuration Release --no-launch-profile
         env:
           ASPNETCORE_ENVIRONMENT: Production
 
