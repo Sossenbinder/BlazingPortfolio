@@ -244,7 +244,6 @@
 }
 .Card .Meta .MetaDescriptions .MetaDescriptionsList[b-xnxb2d2ym9] {
   height: 100%;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
