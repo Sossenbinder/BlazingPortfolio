@@ -1,125 +1,124 @@
 ﻿$buttonColor: #e8f1f0;
 
 @mixin btn {
-    background: $buttonColor;
-    box-shadow: #c7c6c6 0 0 7px 2px;
-    transition: box-shadow 0.2s ease-in-out;
+  background: $buttonColor;
+  box-shadow: #c7c6c6 0 0 7px 2px;
+  transition: box-shadow 0.2s ease-in-out;
 
-    &:hover {
-        box-shadow: #ddd9d9 2px -2px 7px 2px;
-    }
+  &:hover {
+    box-shadow: #ddd9d9 2px -2px 7px 2px;
+  }
 }
 
 .Card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: transform 0.5s ease-in-out;
+  gap: 2em;
+
+  .Meta {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-    transition: transform 0.5s ease-in-out;
-    gap: 2em;
+    justify-content: space-between;
+    gap: 3em;
 
-    .Meta {
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
+
+    .ProfilePictureContainer {
+      height: 100%;
+      width: 100%;
+      margin: 5px;
+      position: relative;
+      flex: 1;
+
+      .ProfilePicture {
+        position: absolute;
+        border-radius: 20px;
+
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .MetaDescriptions {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5em;
+      flex: 1;
+      flex-grow: 3;
+
+      @media (max-width: 900px) {
+        overflow-y: scroll;
+      }
+
+      .Heading {
+        font-size: 2rem;
+        font-family: fangsong;
+        font-variant: small-caps;
+        margin-bottom: unset;
+      }
+
+      .MetaDescriptionsList {
         height: 100%;
-        width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 3em;
+        gap: 2.5em;
 
-        @media (max-width: 900px) {
-            flex-direction: column;
+        .QuickAboutMe {
+          display: flex;
+          flex-direction: column;
+          max-width: 500px;
+          gap: 1.5em;
+
+          > span:nth-child(1) {
+            align-self: center;
+            font-weight: bolder;
+          }
         }
 
-        .ProfilePictureContainer {
-            height: 100%;;
-            width: 100%;
-            margin: 5px;
-            position: relative;
-            flex: 1;
-            
-            .ProfilePicture {
-                position: absolute;
-                border-radius: 20px;
-
-                width: auto;
-                height: auto;
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        .Description {
+          text-align: center;
+          font-weight: bold;
         }
 
-        .MetaDescriptions {
-            height: 100%;
+        .InfoSection {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8em;
+          width: 100%;
+
+          @media (max-width: 900px) and (orientation: landscape) {
+            font-size: 0.7rem;
+          }
+
+          .InfoRow {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            gap: 2.5em;
-            flex: 1;
-            flex-grow: 3;
-
-            @media (max-width: 900px) {
-                overflow-y: scroll;
-            }
-
-            .Heading {
-                font-size: 2rem;
-                font-family: fangsong;
-                font-variant: small-caps;
-                margin-bottom: unset;
-            }
-            
-            .MetaDescriptionsList {
-                height: 100%;
-                overflow-y: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-between;
-                gap: 2.5em;
-
-                .QuickAboutMe {
-                    display: flex;
-                    flex-direction: column;
-                    max-width: 500px;
-                    gap: 1.5em;
-
-                    > span:nth-child(1) {
-                        align-self: center;
-                        font-weight: bolder;
-                    }
-                }
-
-                .Description {
-                    text-align: center;
-                    font-weight: bold;
-                }
-
-                .InfoSection {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.8em;
-                    width: 100%;
-
-                    @media (max-width: 900px) and (orientation: landscape) {
-                        font-size: 0.7rem;
-                    }
-
-                    .InfoRow {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        justify-content: space-between;
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }
