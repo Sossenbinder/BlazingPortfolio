@@ -89,20 +89,28 @@
 }
 .Card .Meta .MetaDescriptions .MetaDescriptionsList[b-h95zl6p0wt] {
   height: 100%;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 2.5em;
 }
-.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe[b-h95zl6p0wt] {
+.Card
+  .Meta
+  .MetaDescriptions
+  .MetaDescriptionsList
+  .QuickAboutMe[b-h95zl6p0wt] {
   display: flex;
   flex-direction: column;
   max-width: 500px;
   gap: 1.5em;
 }
-.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe > span:nth-child(1)[b-h95zl6p0wt] {
+.Card
+  .Meta
+  .MetaDescriptions
+  .MetaDescriptionsList
+  .QuickAboutMe
+  > span:nth-child(1)[b-h95zl6p0wt] {
   align-self: center;
   font-weight: bolder;
 }
@@ -117,11 +125,20 @@
   width: 100%;
 }
 @media (max-width: 900px) and (orientation: landscape) {
-  .Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection[b-h95zl6p0wt] {
+  .Card
+    .Meta
+    .MetaDescriptions
+    .MetaDescriptionsList
+    .InfoSection[b-h95zl6p0wt] {
     font-size: 0.7rem;
   }
 }
-.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection .InfoRow[b-h95zl6p0wt] {
+.Card
+  .Meta
+  .MetaDescriptions
+  .MetaDescriptionsList
+  .InfoSection
+  .InfoRow[b-h95zl6p0wt] {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -234,13 +251,22 @@
   justify-content: space-between;
   gap: 2.5em;
 }
-.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe[b-xnxb2d2ym9] {
+.Card
+  .Meta
+  .MetaDescriptions
+  .MetaDescriptionsList
+  .QuickAboutMe[b-xnxb2d2ym9] {
   display: flex;
   flex-direction: column;
   max-width: 500px;
   gap: 1.5em;
 }
-.Card .Meta .MetaDescriptions .MetaDescriptionsList .QuickAboutMe > span:nth-child(1)[b-xnxb2d2ym9] {
+.Card
+  .Meta
+  .MetaDescriptions
+  .MetaDescriptionsList
+  .QuickAboutMe
+  > span:nth-child(1)[b-xnxb2d2ym9] {
   align-self: center;
   font-weight: bolder;
 }
@@ -255,11 +281,20 @@
   width: 100%;
 }
 @media (max-width: 900px) and (orientation: landscape) {
-  .Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection[b-xnxb2d2ym9] {
+  .Card
+    .Meta
+    .MetaDescriptions
+    .MetaDescriptionsList
+    .InfoSection[b-xnxb2d2ym9] {
     font-size: 0.7rem;
   }
 }
-.Card .Meta .MetaDescriptions .MetaDescriptionsList .InfoSection .InfoRow[b-xnxb2d2ym9] {
+.Card
+  .Meta
+  .MetaDescriptions
+  .MetaDescriptionsList
+  .InfoSection
+  .InfoRow[b-xnxb2d2ym9] {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -407,7 +442,7 @@ a.LinkContainer[b-xnxb2d2ym9] {
 .BlazorWatermark:hover[b-xnxb2d2ym9] {
   background: rgba(255, 255, 255, 0.4);
 }
-.BlazorWatermark[b-xnxb2d2ym9]  span {
+.BlazorWatermark[b-xnxb2d2ym9] span {
   font-size: 1rem;
 }
 
